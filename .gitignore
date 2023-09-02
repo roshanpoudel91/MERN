@@ -2,7 +2,7 @@
 
 # dependencies
 /backend/node_modules
-/forntedn/node_modules
+/forntend/node_modules
 /.pnp
 .pnp.js
 
