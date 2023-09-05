@@ -4,17 +4,17 @@ import PlayerForm from './Player/PlayerForm';
 import PlayerList from './Player/PlayerList';
 import PlayerSingle from './Player/PlayerSingle';
 
-class  App extends Component {
-  constructor(props){
+class App extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       players: [],
-      currentPlayer:{}
+      currentPlayer: {}
     }
     this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this);
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     const url = "http://localhost:4000/players";
 
     const response = await fetch(url);
@@ -25,32 +25,36 @@ class  App extends Component {
     })
 
   }
-updateCurrentPlayer(item){
-  this.setState({
-    currentPlayer:item
-  })
-}
+  updateCurrentPlayer(item) {
+    this.setState({
+      currentPlayer: item
+    })
+  }
 
   render() {
     return (
-    <div className="container-fluid">
+      <div className="container-fluid">
         <div className='row'>
-            <div className='col s12'>Menu</div>
+          <nav>
+            <div className="nav-wrapper blue darken-1">
+              <a href="/" Name="brand-logo">Soccer Management</a>
+            </div>
+          </nav>
         </div>
         <div className='row'>
-            <div className='col s3'><PlayerList players={this.state.players}
+          <div className='col s3'><PlayerList players={this.state.players}
             updateCurrentPlayer={this.updateCurrentPlayer}
-            /></div>
-            <div className='col s9'><PlayerSingle/></div>
+          /></div>
+          <div className='col s9'><PlayerSingle player={this.state.currentPlayer} /></div>
         </div>
 
         <div className='row'>
-            <div className='col s12'><PlayerForm/></div>
+          <div className='col s12'><PlayerForm /></div>
         </div>
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 
 export default App;
